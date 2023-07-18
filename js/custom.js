@@ -172,7 +172,13 @@ $(document).ready(function () {
             if( bottom_of_window > bottom_of_object ){
 
                 $('.chart').easyPieChart({
-                    barColor: '#18366A',  /*bar color변경하는곳*/
+                        barColor: function (percent) {
+                        barColor = '#18366A'; // this is default barColor
+                        if($(this.el).data('barcolor')) {
+                            barColor = '#' + $(this.el).data('barcolor')
+                            }
+                            return barColor;
+                        },
                     trackColor: '#f3f3f3',/*track color변경하는곳*/
                     scaleColor: '#fff',
                     lineCap: 'round',
